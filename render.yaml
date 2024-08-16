@@ -1,0 +1,20 @@
+services:
+  - name: fastapi-movie-api
+    type: web
+    env: docker
+    repo: https://github.com/isah-a/movie_site.git
+    branch: main
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: ALGORITHM
+        sync: false
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        sync: false
+      - key: MONGODB_URL
+        sync: false
+      - key: DATABASE_NAME
+        sync: false
+    plan: free
+    autoDeploy: true
