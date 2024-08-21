@@ -28,6 +28,7 @@ This project is a movie listing API built using FastAPI. It allows users to list
   - Add comment to a comment (nested comments, authenticated access)
 
 ## Project Structure
+```bash
 
 app/
 ├── alembic/
@@ -49,6 +50,8 @@ app/
 ├── test_movies.py
 ├── test_ratings.py
 └── test_comments.py
+
+```
 
 
 ## Getting Started
