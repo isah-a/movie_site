@@ -1,0 +1,12 @@
+services:
+  - name: movie_listing_app
+    type: web
+    env: docker
+    region: oregon
+    plan: free
+    buildCommand: ""
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 10000"
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://root:MLlvh1Kb0zSJqkUWkVZJDXYQFIBIeNRN@dpg-cr2s2rrv2p9s739cp21g-a.oregon-postgres.render.com/base_db_8d3g
