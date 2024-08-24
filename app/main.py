@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from .routers import users, movies, ratings, comments
 from .database import engine, Base
 from .auth import get_current_user
@@ -13,6 +14,16 @@ app = FastAPI()
 
 logger = logging.getLogger(__name__)
 
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    logger.info(f"Request: {request.method} {request.url}")
+    
+    response = await call_next(request)
+
+    logger.info(f"Response: {response.status_code} {request.method} {request.url}")
+
+    return response
+
 @app.on_event("startup")
 async def startup_event():
     logger.info("Application startup")
@@ -25,6 +36,3 @@ app.include_router(users.router)
 app.include_router(movies.router)
 app.include_router(ratings.router)
 app.include_router(comments.router)
-
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0", port=8000)

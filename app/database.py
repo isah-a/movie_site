@@ -6,8 +6,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 load_dotenv()
 SQLALCHEMY_DATABASE_URL = os.environ.get("DB_URL")
-# print (SQLALCHEMY_DATABASE_URL)
-# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL

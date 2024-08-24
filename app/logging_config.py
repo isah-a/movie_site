@@ -1,5 +1,3 @@
-# app/logging_config.py
-
 import logging
 from logging.config import dictConfig
 
